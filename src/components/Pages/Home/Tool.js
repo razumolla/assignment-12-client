@@ -9,11 +9,11 @@ const Tool = ({ tool }) => {
 
             <div class="card-body ">
                 <h2 class="card-title">{tool.name} </h2>
-                <p>{tool.des}</p>
+                <p>{tool.description}</p>
                 <p className='text-2xl'>Quantity: {tool.quantity} Pice</p>
                 <p className='text-2xl'>Price: ${tool.price} </p>
                 <div class="card-actions">
-                    <button class="btn btn-primary btn-block ">Order Now</button>
+                    <button class="btn btn-accent btn-block ">Order Now</button>
                 </div>
             </div>
         </div>

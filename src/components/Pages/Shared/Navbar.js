@@ -23,7 +23,7 @@ const Navbar = () => {
                             {manubar}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Manufacturer</a>
+                    <a className="btn btn-ghost normal-case text-xl">ELECTRONIC-HOUSE</a>
                 </div>
 
 

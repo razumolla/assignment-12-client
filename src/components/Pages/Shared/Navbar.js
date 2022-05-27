@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const manubar = <>
         <li><Link to="/home">Home</Link></li>
-        <li><Link to="/alltools">AllTools</Link></li>
+        <li><Link to="/tools">Tools</Link></li>
         <li><Link to="/blog">Blog</Link></li>
         <li><Link to="/portfolio">Portfolio</Link></li>
         <li>{user ? <button className="btn btn-ghost text-xs" onClick={logout}>LogOut</button> : <Link to="/login">Login</Link>}</li>

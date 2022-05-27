@@ -6,6 +6,8 @@ import Tools from './components/Pages/Home/Tools';
 import Blog from './components/Pages/Blog/Blog';
 import NotFound from './components/Pages/Shared/NotFound';
 import Portfolio from './components/Pages/Portfolio/Portfolio';
+import Login from './components/Pages/Login/Login';
+import SignUp from './components/Pages/Login/SignUp';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route path="/tools" element={<Tools />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

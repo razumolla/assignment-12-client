@@ -8,6 +8,8 @@ import NotFound from './components/Pages/Shared/NotFound';
 import Portfolio from './components/Pages/Portfolio/Portfolio';
 import Login from './components/Pages/Login/Login';
 import SignUp from './components/Pages/Login/SignUp';
+import AllTools from './components/Pages/AllTools/AllTools';
+import PrivetRoute from './components/Pages/Login/PrivetRoute';
 
 function App() {
   return (
@@ -16,7 +18,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
-        <Route path="/tools" element={<Tools />} />
+        <Route path="/alltools" element={
+        <PrivetRoute>
+           <AllTools />
+        </PrivetRoute>
+      } />
         <Route path="/blog" element={<Blog />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/login" element={<Login />} />

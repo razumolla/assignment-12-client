@@ -15,12 +15,9 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    let signUpError;
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
-
 
     if (user|| googleUser) {
         navigate(from, { replace: true });
@@ -30,6 +27,7 @@ const Login = () => {
         return <Loading></Loading>
     }
 
+    let signUpError;
     if (error||googleError) {
         signUpError = <p className='text-red-600'><small>{error?.message ||googleError?.message}</small></p>
     }

@@ -45,7 +45,7 @@ const ToolDetail = () => {
             });
 
         // ---------------------
-        const currentQuantity = tool.quantity;
+      /*   const currentQuantity = tool.quantity;
         const newQuantity = currentQuantity - quantity;
         const url = `http://localhost:5000/tools/${toolId}`;
         fetch(url, {
@@ -58,7 +58,7 @@ const ToolDetail = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-            })
+            }) */
 
     };
 

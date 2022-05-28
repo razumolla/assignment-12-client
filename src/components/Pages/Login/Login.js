@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useForm } from 'react-hook-form';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -14,22 +15,26 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user || googleUser);
 
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    if (user|| googleUser) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
 
-    if (loading||googleLoading) {
+
+    if (loading || googleLoading) {
         return <Loading></Loading>
     }
 
     let signUpError;
-    if (error||googleError) {
-        signUpError = <p className='text-red-600'><small>{error?.message ||googleError?.message}</small></p>
+    if (error || googleError) {
+        signUpError = <p className='text-red-600'><small>{error?.message || googleError?.message}</small></p>
     }
 
     const onSubmit = data => {

@@ -13,6 +13,10 @@ import PrivetRoute from './components/Pages/Login/PrivetRoute';
 import ToolDetail from './components/Pages/Home/ToolDetail';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './components/Pages/DashBoard/Dashboard';
+import MyOrders from './components/Pages/DashBoard/MyOrders';
+import MyReview from './components/Pages/DashBoard/MyReview';
+import MyProfile from './components/Pages/DashBoard/MyProfile';
 
 function App() {
   return (
@@ -32,6 +36,16 @@ function App() {
             <ToolDetail />
           </PrivetRoute>
         } />
+
+        <Route path="/dashboard" element={
+          <PrivetRoute>
+            <Dashboard />
+          </PrivetRoute>
+        }>
+          <Route index element={<MyOrders />} />
+          <Route path="review" element={<MyReview />} />
+          <Route path="profile" element={<MyProfile />} />
+        </Route>
 
         <Route path="/blog" element={<Blog />} />
         <Route path="/portfolio" element={<Portfolio />} />

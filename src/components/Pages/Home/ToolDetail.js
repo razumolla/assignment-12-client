@@ -4,41 +4,32 @@ import { useParams } from 'react-router-dom';
 import useToolDetail from '../../hooks/useToolDetail';
 import auth from '../../../firebase.init'
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 const ToolDetail = () => {
     let { toolId } = useParams();
     const [tool] = useToolDetail(toolId);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
-    /* 
-        const handleBooking = event => {
-            
-            const slot = event.target.slot.value;
-    
-            const booking = {
-                slot,
-                patient: user.email,
-                patientName: user.displayName,
-                phone: event.target.phone.value
-            }
-    
-           
-     */
-
-
-
-
 
     const onSubmit = data => {
+        const quantity = data.quantity;
+        const unitPrice = tool.price;
+        const totalPrice = (quantity * unitPrice);
 
         const order = {
-            name: user?.displayName,
-            email: user.email,
+            product: tool.name,
+            user: user?.displayName,
+            email: user?.email,
+            image: tool.img,
             address: data.address,
             shop: data.shop,
             phone: data.phone,
-            quantity: data.product,
+            quantity,
+            unitPrice,
+            totalPrice,
+
         }
         fetch('http://localhost:5000/order', {
             method: 'POST',
@@ -49,8 +40,25 @@ const ToolDetail = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                toast("Order Successful")
+                reset();
             });
+
+        // ---------------------
+        const currentQuantity = tool.quantity;
+        const newQuantity = currentQuantity - quantity;
+        const url = `http://localhost:5000/tools/${toolId}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newQuantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data);
+            })
 
     };
 
@@ -126,15 +134,10 @@ const ToolDetail = () => {
                                     value: true,
                                     message: 'Phone Number is Required'
                                 },
-                                minLength: {
-                                    value: 11,
-                                    message: 'Must be 11 characters'
-                                },
                             })}
                         />
                         <label className="label">
                             {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
-                            {errors.phone?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
                         </label>
                     </div>
 
@@ -143,7 +146,7 @@ const ToolDetail = () => {
                             type="number"
                             placeholder="Your product quantity"
                             className="input input-bordered w-full max-w-xs"
-                            {...register("product", {
+                            {...register("quantity", {
                                 required: {
                                     value: true,
                                     message: ' quantity is Required'
@@ -152,23 +155,21 @@ const ToolDetail = () => {
                                     value: 100,
                                     message: 'Min Oder 100'
                                 },
+                                max: {
+                                    value: 50000,
+                                    message: 'Max Oder upto 50000'
+                                },
                             })}
                         />
                         <label className="label">
-                            {errors.product?.type === 'required' && <span className="label-text-alt text-red-500">{errors.product.message}</span>}
-                            {errors.product?.type === 'min' && <span className="label-text-alt text-red-500">{errors.product.message}</span>}
+                            {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
+                            {errors.quantity?.type === 'min' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
+                            {errors.quantity?.type === 'max' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
                         </label>
                     </div>
 
-
-
-
-
                     <input className='btn w-full max-w-xs text-white' type="submit" value="Order" />
                 </form>
-
-
-
 
             </div>
         </div>

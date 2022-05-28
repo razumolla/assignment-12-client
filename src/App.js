@@ -11,6 +11,8 @@ import SignUp from './components/Pages/Login/SignUp';
 import AllTools from './components/Pages/AllTools/AllTools';
 import PrivetRoute from './components/Pages/Login/PrivetRoute';
 import ToolDetail from './components/Pages/Home/ToolDetail';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -21,15 +23,15 @@ function App() {
         <Route path="home" element={<Home />} />
 
         <Route path="/tools" element={
-        <PrivetRoute>
-           <AllTools />
-        </PrivetRoute>
-      } />
+          <PrivetRoute>
+            <AllTools />
+          </PrivetRoute>
+        } />
         <Route path="/tools/:toolId" element={
-        <PrivetRoute>
-           <ToolDetail />
-        </PrivetRoute>
-      } />
+          <PrivetRoute>
+            <ToolDetail />
+          </PrivetRoute>
+        } />
 
         <Route path="/blog" element={<Blog />} />
         <Route path="/portfolio" element={<Portfolio />} />
@@ -38,6 +40,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

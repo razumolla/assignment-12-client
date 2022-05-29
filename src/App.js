@@ -2,7 +2,6 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Pages/Home/Home';
 import Navbar from './components/Pages/Shared/Navbar';
-import Tools from './components/Pages/Home/Tools';
 import Blog from './components/Pages/Blog/Blog';
 import NotFound from './components/Pages/Shared/NotFound';
 import Portfolio from './components/Pages/Portfolio/Portfolio';
@@ -17,6 +16,8 @@ import Dashboard from './components/Pages/DashBoard/Dashboard';
 import MyOrders from './components/Pages/DashBoard/MyOrders';
 import MyReview from './components/Pages/DashBoard/MyReview';
 import MyProfile from './components/Pages/DashBoard/MyProfile';
+import Users from './components/Pages/DashBoard/Users';
+import AddProduct from './components/Pages/DashBoard/AddProduct';
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
           <Route index element={<MyOrders />} />
           <Route path="review" element={<MyReview />} />
           <Route path="profile" element={<MyProfile />} />
+          <Route path="addproduct" element={<AddProduct />} />
+          <Route path="users" element={<Users />} />
         </Route>
 
         <Route path="/blog" element={<Blog />} />

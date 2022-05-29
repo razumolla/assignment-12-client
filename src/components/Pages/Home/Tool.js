@@ -18,6 +18,8 @@ const Tool = ({ tool }) => {
                 <h2 className="card-title">{name} </h2>
                 <p>{description}</p>
                 <p className='text-2xl'>Quantity: {quantity} Pice</p>
+                <p className='text-xl'>Min Order: 100 Pice</p>
+
                 <p className='text-2xl'>Price: ${price} </p>
                 <div className="card-actions">
                     <button className="btn btn-accent btn-block"

@@ -30,7 +30,7 @@ const Dashboard = () => {
                         <li> <Link to="/dashboard/users"> <AiOutlineUserAdd />Manage All Users  </Link></li>
                         <li> <Link to="/dashboard/manageorders"> <AiOutlineUserAdd />Manage All Order </Link></li>
                         <li><Link to="/dashboard/manageproducts"> <AiOutlineUserAdd />Manage Products  </Link></li>
-                        <li><Link to="/dashboard/addproduct"> <AiOutlineUserAdd />Add Product</Link> </li>
+                        <li><Link to="/dashboard/addproduct"> <AiOutlineUserAdd />Add New Product</Link> </li>
                     </>}
                 </ul>
 

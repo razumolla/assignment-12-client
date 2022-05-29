@@ -45,32 +45,32 @@ const ToolDetail = () => {
             });
 
         // ---------------------
-      /*   const currentQuantity = tool.quantity;
-        const newQuantity = currentQuantity - quantity;
-        const url = `http://localhost:5000/tools/${toolId}`;
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newQuantity)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('success', data);
-            }) */
+        /*   const currentQuantity = tool.quantity;
+          const newQuantity = currentQuantity - quantity;
+          const url = `http://localhost:5000/tools/${toolId}`;
+          fetch(url, {
+              method: 'PUT',
+              headers: {
+                  'content-type': 'application/json'
+              },
+              body: JSON.stringify(newQuantity)
+          })
+              .then(res => res.json())
+              .then(data => {
+                  console.log('success', data);
+              }) */
 
     };
 
 
     return (
-        <div class="card lg:card-side bg-base-100 shadow-xl">
+        <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure className='w-9/12'>
                 <img src={tool.img} alt="Album" />
             </figure>
-            <div class="card-body">
-                <h2 class="text-2xl font-bold">{tool.name}</h2>
-                <h2 class="text-2xl font-bold">Price: <span className='font-bold text-3xl text-red-700'>${tool.price} </span> </h2>
+            <div className="card-body">
+                <h2 className="text-2xl font-bold">{tool.name}</h2>
+                <h2 className="text-2xl font-bold">Price: <span className='font-bold text-3xl text-red-700'>${tool.price} </span> </h2>
                 <h2 > <span className='font-bold'>Available Quantity: </span> {tool.quantity} </h2>
                 <p> <span className='font-bold'>Description: </span> {tool.description} </p>
                 <hr />

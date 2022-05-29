@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteManageProduct = ({ tools, setTools, order }) => {
     const handleDelete = id => {
 
-        const url = `http://localhost:5000/tools/${id}`
+        const url = `https://hidden-lake-23294.herokuapp.com/tools/${id}`
         fetch(url, {
             method: 'DELETE',
         })

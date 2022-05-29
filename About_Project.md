@@ -1,6 +1,6 @@
 # Getting Started with tools Manufacturer Website
 
-This project was created by Razu Molla [Click Here to see My Website ]().
+This project was created by Razu Molla [Click Here to see My Website ](https://electronic-house-3cbdc.web.app/).
 
 ## About This Project
 
@@ -8,6 +8,7 @@ The project was create with Tailwind css and Daisy Apu. You don't know What I wa
 
 ### Why You Select this website For you . Please read !
 
+* user can manage your order. 
 * This is My best website forever.It perfect for Manufacturer company.
 * You have a manufacturer factory , you can't sell big scale. This website very Important for you.  
 * You sell many part in one time different dealer. Its very helpful for you.

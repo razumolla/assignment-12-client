@@ -31,7 +31,7 @@ const ToolDetail = () => {
             totalPrice,
 
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://hidden-lake-23294.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ const ToolDetail = () => {
         // ---------------------
         /*   const currentQuantity = tool.quantity;
           const newQuantity = currentQuantity - quantity;
-          const url = `http://localhost:5000/tools/${toolId}`;
+          const url = `https://hidden-lake-23294.herokuapp.com/tools/${toolId}`;
           fetch(url, {
               method: 'PUT',
               headers: {

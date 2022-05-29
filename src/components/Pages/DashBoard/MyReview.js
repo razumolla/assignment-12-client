@@ -20,7 +20,7 @@ const MyReview = () => {
             rating: data.rating,
             location: data.location,
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://hidden-lake-23294.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

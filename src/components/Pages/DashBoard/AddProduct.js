@@ -18,18 +18,18 @@ const AddProduct = () => {
             quantity: data.quantity,
             price: data.price
         }
-        fetch('http://localhost:5000/tools', {
+        fetch('https://hidden-lake-23294.herokuapp.com/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(addProduct)
         })
-        .then(res => res.json())
-        .then(data => {
-            toast("Successful Added")
-            reset();
-        });
+            .then(res => res.json())
+            .then(data => {
+                toast("Successful Added")
+                reset();
+            });
     };
 
     return (

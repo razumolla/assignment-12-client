@@ -14,7 +14,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/order?email=${user.email}`, {
+            fetch(`https://hidden-lake-23294.herokuapp.com/order?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -33,13 +33,13 @@ const MyOrders = () => {
                     setOrders(data)
                 })
         }
-    }, [user,navigate])
+    }, [user, navigate])
 
     const handleDelete = id => {
         const process = window.confirm('Are You Sure You Want to Delete?')
         if (process) {
             console.log('delete order', id);
-            const url = `http://localhost:5000/order/${id}`
+            const url = `https://hidden-lake-23294.herokuapp.com/order/${id}`
             fetch(url, {
                 method: 'DELETE',
             })

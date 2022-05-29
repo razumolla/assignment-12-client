@@ -33,7 +33,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div className='justify-items-center'>
+        <>
             <h3 className='text-2xl mt-3'>Add new Product</h3>
             <form onSubmit={handleSubmit(onSubmit)} >
 
@@ -125,7 +125,7 @@ const AddProduct = () => {
 
                 <input className='btn w-full max-w-xs text-white' type="submit" value="Add" />
             </form>
-        </div>
+        </>
     );
 };
 

@@ -6,6 +6,7 @@ import useAdmin from '../../hooks/useAdmin';
 import { AiOutlineUserAdd } from "react-icons/ai";
 const Dashboard = () => {
     const [user] = useAuthState(auth)
+    console.log(user);
     const [admin] = useAdmin(user)
     return (
         <div className="drawer drawer-mobile">

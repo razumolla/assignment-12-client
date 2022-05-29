@@ -2,10 +2,13 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import DeleteConfirmModal from './DeleteConfirmModal';
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([])
+    const [deleteConfirm, setDeleteConfirm] = useState(false)
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
 
@@ -31,6 +34,26 @@ const MyOrders = () => {
                 })
         }
     }, [user])
+
+    const handleDelete = id => {
+        const process = window.confirm('Are You Sure You Want to Delete?')
+        if (process) {
+            console.log('delete order', id);
+            const url = `http://localhost:5000/order/${id}`
+            fetch(url, {
+                method: 'DELETE',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast.success('Cancel Success')
+                        const remaining = orders.filter(order => order._id !== id)
+                        setOrders(remaining);
+                    }
+                })
+        }
+    }
     return (
         <div>
             <h2>My Order </h2>
@@ -64,8 +87,15 @@ const MyOrders = () => {
                                     <button className='btn btn-ghost'> Pay-Bill</button>
                                 </td>
                                 <td>
-                                    <button className='btn btn-ghost'> cancel</button>
+                                    <label onClick={() => setDeleteConfirm(true)} for="delete-confirm-modal" class="btn btn-ghost">delete</label>
                                 </td>
+                                {
+                                    deleteConfirm && <DeleteConfirmModal
+                                        order={order}
+                                        orders={orders}
+                                        setOrders={setOrders}
+                                    > </DeleteConfirmModal>
+                                }
 
                             </tr>)
                         }
@@ -73,6 +103,7 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
+            
         </div>
     );
 };

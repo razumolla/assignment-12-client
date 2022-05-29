@@ -46,9 +46,9 @@ function App() {
             <Dashboard />
           </PrivetRoute>
         }>
-          <Route index element={<MyOrders />} />
+          <Route index element={<MyProfile />} />
+          <Route path="myorder" element={<MyOrders />} />
           <Route path="review" element={<MyReview />} />
-          <Route path="profile" element={<MyProfile />} />
           <Route path="users" element={<RequireAdmin> <Users /> </RequireAdmin>} />
           <Route path="manageorders" element={<RequireAdmin> <ManageOrder /> </RequireAdmin>} />
           <Route path="manageproducts" element={<RequireAdmin> <ManageProduct /> </RequireAdmin>} />

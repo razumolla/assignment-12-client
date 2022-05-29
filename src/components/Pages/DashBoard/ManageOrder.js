@@ -20,8 +20,8 @@ const ManageOrder = () => {
                             <th>Email</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
-                            <th>Pending/Paid</th>
-                            <th>Shipping/Delivered</th>
+                            <th>Unpaid/Paid</th>
+                            <th>Shipped</th>
                         </tr>
                     </thead>
 
@@ -34,10 +34,10 @@ const ManageOrder = () => {
                                 <td>{order.quantity} -Pice</td>
                                 <td>${order.totalPrice}</td>
                                 <td>
-                                    <button className='btn btn-ghost'>Pending</button>
+                                    <button className='btn btn-ghost'>Unpaid</button>
                                 </td>
                                 <td>
-                                    <button className='btn btn-ghost'> Shipping</button>
+                                    <button className='btn btn-ghost'> Pending </button>
                                 </td>
 
                             </tr>)

@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaBeer } from 'react-icons/fa';
 import { AiOutlineUserAdd, AiFillApi,AiFillBank,AiOutlineAliwangwang } from "react-icons/ai";
 const Summary = () => {
     return (

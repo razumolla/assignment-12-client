@@ -9,11 +9,15 @@ const MyReview = () => {
     const [user] = useAuthState(auth);
 
     const onSubmit = data => {
-
+        let img = user.photoURL;
+        if (img === null) {
+            img = "https://i.ibb.co/dQYHdXn/razubd.jpg"
+        }
         const addProduct = {
             name: user.displayName,
-            img: user.photoURL,
+            img,
             description: data.description,
+            rating: data.rating,
             location: data.location,
         }
         fetch('http://localhost:5000/reviews', {
@@ -61,6 +65,35 @@ const MyReview = () => {
                     />
                     <label className="label">
                         {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
+                    </label>
+                </div>
+
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <h2>Rating Us</h2></label>
+                    <input
+                        type="number"
+                        placeholder="Rating us (1-5) star"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register("rating", {
+                            required: {
+                                value: true,
+                                message: 'Rating is Required'
+                            },
+                            min: {
+                                value: 1,
+                                message: 'Min rating 1 star'
+                            },
+                            max: {
+                                value: 50000,
+                                message: 'Max rating  5 star'
+                            }
+                        })}
+                    />
+                    <label className="label">
+                        {errors.rating?.type === 'required' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                        {errors.rating?.type === 'min' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                        {errors.rating?.type === 'max' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
                     </label>
                 </div>
 

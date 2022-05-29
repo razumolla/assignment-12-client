@@ -1,10 +1,10 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const DeleteConfirmModal = ({ setOrders, orders, order }) => {
+const DeleteManageProduct = ({ tools, setTools, order }) => {
     const handleDelete = id => {
 
-        const url = `http://localhost:5000/order/${id}`
+        const url = `http://localhost:5000/tools/${id}`
         fetch(url, {
             method: 'DELETE',
         })
@@ -12,8 +12,8 @@ const DeleteConfirmModal = ({ setOrders, orders, order }) => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     toast.success('Cancel Success')
-                    const remaining = orders.filter(order => order._id !== id)
-                    setOrders(remaining);
+                    const remaining = tools.filter(order => order._id !== id)
+                    setTools(remaining);
                 }
             })
 
@@ -41,4 +41,4 @@ const DeleteConfirmModal = ({ setOrders, orders, order }) => {
     );
 };
 
-export default DeleteConfirmModal;
+export default DeleteManageProduct;

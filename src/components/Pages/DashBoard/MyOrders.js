@@ -33,7 +33,7 @@ const MyOrders = () => {
                     setOrders(data)
                 })
         }
-    }, [user])
+    }, [user,navigate])
 
     const handleDelete = id => {
         const process = window.confirm('Are You Sure You Want to Delete?')
@@ -87,7 +87,7 @@ const MyOrders = () => {
                                     <button className='btn btn-ghost'> Pay-Bill</button>
                                 </td>
                                 <td>
-                                    <label onClick={() => setDeleteConfirm(true)} for="delete-confirm-modal" class="btn btn-ghost">delete</label>
+                                    <label onClick={() => setDeleteConfirm(true)} for="delete-confirm-modal" className="btn btn-ghost">delete</label>
                                 </td>
                                 {
                                     deleteConfirm && <DeleteConfirmModal
@@ -103,7 +103,7 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     );
 };

@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import DeleteManageProduct from './DeleteManageProduct';
 
 const ManageProduct = () => {
     const [tools, setTools] = useState([])
+    const [deleteConfirm, setDeleteConfirm] = useState(false)
 
     useEffect(() => {
         fetch(`http://localhost:5000/tools`)
@@ -31,9 +33,15 @@ const ManageProduct = () => {
                                 <td>{order.quantity} -Pice</td>
                                 <td>${order.price}</td>
                                 <td>
-                                    <button className='btn btn-ghost'> Delete</button>
+                                    <label onClick={() => setDeleteConfirm(true)} for="delete-confirm-modal" className="btn btn-ghost">delete</label>
                                 </td>
-
+                                {
+                                    deleteConfirm && <DeleteManageProduct
+                                        order={order}
+                                        tools={tools}
+                                        setTools={setTools}
+                                    > </DeleteManageProduct>
+                                }
                             </tr>)
                         }
 
